@@ -35,7 +35,9 @@ class FancyConfig(Mapping):
       'imports': {'star_wars': ['ewok', 'bantha']}}
     """
 
-    def __init__(self, path_config_to_load: Union[str, Path] = Path.home().joinpath('.config/fancyconfig.yml'),
+    def __init__(self,
+                 path_config_to_load: Union[str, Path] = (Path.home()
+                                                          .joinpath('.config/fancyconfig.yml')),
                  default_config_path: Union[str, Path] = (Path(__file__).resolve()
                                                           .parent.joinpath('config.yml'))):
         """
