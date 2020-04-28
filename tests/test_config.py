@@ -98,3 +98,15 @@ class TestiFancyConfig(unittest.TestCase):
 
         # Remove the file.
         dest.unlink()
+
+        # Should work with a str path
+        default_path_ok_str = '../bff/config.yml'
+        dest_str = '../config.yml'
+        config = FancyConfig(dest_str, default_path_ok_str)
+
+        self.assertEqual(config['env'], 'prod')
+        self.assertEqual(config['database']['user'], 'Chew')
+        self.assertEqual(config['imports']['star_wars'], ['ewok', 'bantha'])
+
+        # Remove the file.
+        Path(dest_str).unlink()
