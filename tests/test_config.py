@@ -7,6 +7,7 @@ import filecmp
 from pathlib import Path
 import unittest
 import unittest.mock
+import os
 
 from bff.config import FancyConfig
 
@@ -100,8 +101,8 @@ class TestiFancyConfig(unittest.TestCase):
         dest.unlink()
 
         # Should work with a str path
-        default_path_ok_str = '../bff/config.yml'
-        dest_str = '../config.yml'
+        default_path_ok_str = os.path.join(Path(__file__).resolve().parent.parent, 'bff/config.yml')
+        dest_str = os.path.join(Path(__file__).resolve().parent, '../config.yml')
         config = FancyConfig(dest_str, default_path_ok_str)
 
         self.assertEqual(config['env'], 'prod')
